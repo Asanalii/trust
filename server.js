@@ -12,8 +12,10 @@ app.use("/about", require("./routes/about"));
 app.use("/signup", require("./routes/signup"));
 app.use("/article", require("./routes/article"));
 
-
+let a = 1;
+//ds
 
 app.listen(port, () =>
+
     console.log(`App listening at http://localhost:${port}`)
 );
