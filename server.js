@@ -12,8 +12,7 @@ app.use("/about", require("./routes/about"));
 app.use("/signup", require("./routes/signup"));
 app.use("/article", require("./routes/article"));
 
-//let a = 1;
-//ds
+let a=1;
 
 app.listen(port, () =>
 
