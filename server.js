@@ -1,7 +1,10 @@
 const express = require("express");
+const mongoose=require('mongoose')
 const app = express();
 const port = 3000;
 const ejs=require('ejs')
+
+//mongoose.connect('mongodb://localhost/blog')
 
 app.set('view engine','ejs');
 
@@ -12,10 +15,6 @@ app.use("/about", require("./routes/about"));
 app.use("/signup", require("./routes/signup"));
 app.use("/article", require("./routes/article"));
 
-//let a = 1;
-//ds
-
 app.listen(port, () =>
-
     console.log(`App listening at http://localhost:${port}`)
 );
