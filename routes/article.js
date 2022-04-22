@@ -5,17 +5,17 @@ var path = require('path')
 
 router.get('/',(req,res)=>{
     const articles=[{
-        title: 'Test article',
+        title: 'Article',
         date: new Date(),
         description:'Test description'
     },
         {
-            title: 'Test article2',
+            title: 'Article2',
             date: new Date(),
             description:'Test description2'
         },
         {
-            title: 'Test article3',
+            title: 'Article3',
             date: new Date(),
             description:'Test description3'
         }
