@@ -4,6 +4,16 @@ var path = require('path')
 /*const ejs=require('ejs')*/
 
 
+function formatMessage(username, text) {
+    return {
+        username,
+        text,
+        time: express().format('h:mm a')
+    };
+}
+
+
+
 
 router
     .route("/")
