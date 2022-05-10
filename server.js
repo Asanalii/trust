@@ -1,9 +1,20 @@
 const express = require("express");
-const mongoose=require('mongoose')
+const mongoose=require('mongoose');
+
+
 const app = express();
 const port = 3000;
 const ejs=require('ejs')
 
+//connect to mongodb
+mongoose.connect('mongodb+srv://ayanaaa:FSdTn0S4EerwiQoo@cluster0.uwphe.mongodb.net/trust?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(()=>{
+    console.log('db connected');
+}).catch(err=>{
+    console.log('db not connected'+err)
+});
 //mongoose.connect('mongodb://localhost/blog')
 
 app.set('view engine','ejs');
