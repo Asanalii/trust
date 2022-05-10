@@ -1,32 +1,40 @@
 const express = require("express");
-const mongoose=require('mongoose');
-
-
+const mongoose=require('mongoose')
+const bodyParser =require('body-parser')
 const app = express();
 const port = 3000;
 const ejs=require('ejs')
+//app.use(express.urlencoded({extended:false}))
 
-//connect to mongodb
-mongoose.connect('mongodb+srv://ayanaaa:FSdTn0S4EerwiQoo@cluster0.uwphe.mongodb.net/trust?retryWrites=true&w=majority',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(()=>{
-    console.log('db connected');
-}).catch(err=>{
-    console.log('db not connected'+err)
-});
-//mongoose.connect('mongodb://localhost/blog')
-
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 app.set('view engine','ejs');
+
+const UserRoute = require('./routes/user_cont_route')
+app.use('/user',UserRoute)
+
+const dbConfig=require('./config/database.config');
+const {router} = require("express/lib/application");
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect(dbConfig.url, {
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Database Connected Successfully!!");
+}).catch(err => {
+    console.log('Could not connect to the database', err);
+    process.exit();
+});
 
 app.use(express.static(__dirname+"/public"))
 app.use("/", require("./routes/root"));
 app.use("/login", require("./routes/login"));
 app.use("/about", require("./routes/about"));
 app.use("/signup", require("./routes/signup"));
-app.use("/article", require("./routes/article"));
+//app.use("/article", require("./routes/article"));
 app.use("/chat", require("./routes/chat1"));
-app.use("/joinchat", require ("./routes/chat2"));
+app.use("/joinChat", require ("./routes/chat2"));
 
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`)
