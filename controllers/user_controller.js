@@ -1,90 +1,85 @@
 const UserModel = require('../models/user')
-
-exports.create = async (req,res) => {
-    if (!req.body.email && !req.body.firstName && !req.body.lastName && !req.body.userName) {
-        res.status(400).send({message: "Content can not be empty!"})
+// Create and Save a new user
+exports.create = async (req, res) => {
+    if (!req.body.email && !req.body.firstName && !req.body.lastName && !req.body.username) {
+        res.status(400).send({ message: "Content can not be empty!" });
     }
 
     const user = new UserModel({
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userName: req.body.userName
+        username: req.body.username
     });
 
     await user.save().then(data => {
         res.send({
-            message: "User was created successfully!",
-            user: data
+            message:"User created successfully!!",
+            user:data
         });
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occured while creating user "
+            message: err.message || "Some error occurred while creating user"
         });
     });
 };
-
-exports.findAll = async (req,res) =>{
-    try{
+// Retrieve all users from the database.
+exports.findAll = async (req, res) => {
+    try {
         const user = await UserModel.find();
         res.status(200).json(user);
-    } catch (error){
-        res.status(404).json({message: error.message})
+    } catch(error) {
+        res.status(404).json({message: error.message});
     }
 };
-
-exports.findOne = async (req,res)=>{
-    try{
+// Find a single User with an id
+exports.findOne = async (req, res) => {
+    try {
         const user = await UserModel.findById(req.params.id);
-        res.status(200).json(user)
-    } catch (e) {
-        res.status(404).json({message:e.message})
+        res.status(200).json(user);
+    } catch(error) {
+        res.status(404).json({ message: error.message});
     }
 };
-
-exports.update = async (req,res)=>{
-    if(!req.body){
+// Update a user by the id in the request
+exports.update = async (req, res) => {
+    if(!req.body) {
         res.status(400).send({
-            message: "Data to update can not be empty"
+            message: "Data to update can not be empty!"
         });
     }
 
     const id = req.params.id;
 
-    await UserModel.findByIdAndUpdate(id,req.body,{useFindAndModify:false}).then(data=>{
-        if(!data){
+    await UserModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(data => {
+        if (!data) {
             res.status(404).send({
-                message: "User not found"
-            })
+                message: `User not found.`
+            });
         }else{
-            res.send({
-                message:"User updated successfully"
-            })
+            res.send({ message: "User updated successfully." })
         }
-    }).catch(err=>{
+    }).catch(err => {
         res.status(500).send({
-            message:err.message
-        })
-    })
+            message: err.message
+        });
+    });
 };
-
-exports.destroy = async(req,res)=>{
-   // let useremail=req.body.email;
-
-    await UserModel.findByIdAndRemove(req.params.id).then(data=>{
-        if(!data){
+// Delete a user with the specified id in the request
+exports.destroy = async (req, res) => {
+    await UserModel.findByIdAndRemove(req.params.id).then(data => {
+        if (!data) {
             res.status(404).send({
-                message: "User not found"
-            })
-        }else{
+                message: `User not found.`
+            });
+        } else {
             res.send({
-                message:"User deleted successfully"
-            })
+                message: "User deleted successfully!"
+            });
         }
-    }).catch(err=>{
+    }).catch(err => {
         res.status(500).send({
-            message:err.message
-        })
-    })
+            message: err.message
+        });
+    });
 };
-

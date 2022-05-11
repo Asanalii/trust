@@ -19,7 +19,8 @@ const {router} = require("express/lib/application");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology:true
 }).then(() => {
     console.log("Database Connected Successfully!!");
 }).catch(err => {
