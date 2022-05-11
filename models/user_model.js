@@ -13,7 +13,7 @@ let schema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    userName: {
+    username: {
         type: String,
         required:true,
         unique:true
