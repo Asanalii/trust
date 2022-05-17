@@ -16,8 +16,11 @@ let schema = new mongoose.Schema({
     userName: {
         type: String,
         required:true,
-        unique:true
-    }
+        unique: true
+    },
+    password:{
+        type:String,
+        }
 });
 
 let UserModel = new mongoose.model('User',schema);

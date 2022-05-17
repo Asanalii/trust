@@ -1,15 +1,14 @@
-/*
 const mongoose = require('mongoose')
 
 const articleSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required:true
     },
     description :{
         type: String
     },
-    markdown:{
+    markdown: {
         type: String,
         required: true
     },
@@ -20,4 +19,4 @@ const articleSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Article',articleSchema)*/
+module.exports = mongoose.model('Article',articleSchema)
