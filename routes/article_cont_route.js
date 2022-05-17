@@ -8,7 +8,7 @@ express().use(express.urlencoded({extended:false}))
 
 router.get('/',(req,res)=>{
     const articles=[{
-        title: 'Article_cont_route',
+        title: 'Articles',
         date: new Date(),
         description:'Test description'
     },
@@ -26,7 +26,7 @@ router.get('/',(req,res)=>{
     res.render('articles',{articles: articles})
 })
 
-router.get('/new',ArticleController.);
+router.get('/new',ArticleController.new);
 /*
 router.get('/:id',UserController.findOne);
 router.post('/',UserController.create);
@@ -45,19 +45,18 @@ router.delete('/:id',UserController.destroy);
     res.render('articles/show', {article: article})
 })*/
 
-router.post('/',  (async (req, res) => {
+/* router.post('/',  (async (req, res) => {
 
-    /*let article = new Article_cont_route({
+    let article = new Article_cont_route({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown
     })
 
     await article.save()
-*/
+})) */
 
-}))
-
+router.post('/',ArticleController.add)
 
 
 
