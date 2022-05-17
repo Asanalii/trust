@@ -24,6 +24,7 @@ exports.create = async (req, res) => {
         });
     });
 };
+
 // Retrieve all users from the database.
 exports.findAll = async (req, res) => {
     try {
