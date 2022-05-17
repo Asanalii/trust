@@ -34,7 +34,7 @@ app.use("/", require("./routes/root"));
 app.use("/login", require("./routes/login"));
 app.use("/about", require("./routes/about"));
 app.use("/signup", require("./routes/signup"));
-//app.use("/article", require("./routes/article"));
+//  app.use("/article", require("./routes/article_cont_route"));
 app.use("/chat", require("./routes/chat1"));
 app.use("/joinChat", require ("./routes/chat2"));
 

@@ -1,7 +1,7 @@
 const express=require('express')
 const router = express.Router();
-const Article_cont_route = require('./../models/article')
 const mongoose = require("mongoose");
+const ArticleController = require("../controllers/article_controller");
 
 express().use(express.urlencoded({extended:false}))
 
@@ -26,9 +26,18 @@ router.get('/',(req,res)=>{
     res.render('articles',{articles: articles})
 })
 
-router.get('/new',(req,res)=>{
+router.get('/new',ArticleController.);
+/*
+router.get('/:id',UserController.findOne);
+router.post('/',UserController.create);
+router.patch('/:id',UserController.update);
+router.delete('/:id',UserController.destroy);
+*/
+
+
+/*router.get('/new',(req,res)=>{
     res.render('new',{article : new Article_cont_route()})
-})
+})*/
 
 /*router.get('/:id',async (req, res) => {
     const article = await Article_cont_route.findById(req.params.id)
@@ -48,6 +57,8 @@ router.post('/',  (async (req, res) => {
 */
 
 }))
+
+
 
 
 module.exports = router;
