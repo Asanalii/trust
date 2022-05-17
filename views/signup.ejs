@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Sign up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <link rel="stylesheet" href="/css/signup.css">
@@ -14,21 +14,21 @@
     <h2>Sign up</h2>
     <div class="return" ><a href="/"><i class="fa fa-angle-left" aria-hidden="true"></i></a></div>
 
-    <form id="Login">
+    <form id="Login" action="/user" method="post">
         <p>
-            <input type="text" id="username"  placeholder="Create Username" required><i class="validation"><span></span><span></span></i>
+            <input type="text" id="username" name="userName" placeholder="Create username"required><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-            <input type="text" id="username"  placeholder="Write your name" required><i class="validation"><span></span><span></span></i>
+            <input type="text" id="name" name="firstName" placeholder="Write your name"   required><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-            <input type="text" id="username"  placeholder="Write your surname" required><i class="validation"><span></span><span></span></i>
+            <input type="text" id="surname" name="lastName"  placeholder="Write your surname" required><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-            <input type="email" id="email" placeholder="Write your email" required><i class="validation"><span></span><span></span></i>
+            <input type="email" id="email" name="email" placeholder="Write your email" required><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-            <input type="text" id="username"  placeholder="Write your IIN" required><i class="validation"><span></span><span></span></i>
+            <input type="password" id="password"  placeholder="Write your password" required><i class="validation"><span></span><span></span></i>
         </p>
         <p>
             <input type="submit" value="Sign up">

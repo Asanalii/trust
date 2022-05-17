@@ -1,22 +1,23 @@
+const path = require('path')
 const UserModel = require('../models/user')
 // Create and Save a new user
 exports.create = async (req, res) => {
-    if (!req.body.email && !req.body.firstName && !req.body.lastName && !req.body.username) {
-        res.status(400).send({ message: "Content can not be empty!" });
+    if (!req.body.email && !req.body.firstName && !req.body.lastName && !req.body.userName && !req.body.password) {
+        res.status(400).send({ message: "Content can not be empty!" })
     }
 
     const user = new UserModel({
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        username: req.body.username
+        userName: req.body.userName,
+        password: req.body.password
     });
 
+
+
     await user.save().then(data => {
-        res.send({
-            message:"User created successfully!!",
-            user:data
-        });
+        return res.render(path.resolve('views/login.ejs'))
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while creating user"

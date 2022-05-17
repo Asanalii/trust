@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose=require('mongoose')
 const bodyParser =require('body-parser')
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 const ejs=require('ejs')
 //app.use(express.urlencoded({extended:false}))
 
@@ -29,6 +29,7 @@ mongoose.connect(dbConfig.url, {
 });
 
 app.use(express.static(__dirname+"/public"))
+
 app.use("/", require("./routes/root"));
 app.use("/login", require("./routes/login"));
 app.use("/about", require("./routes/about"));
