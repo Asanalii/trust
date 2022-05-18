@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose=require('mongoose')
 const bodyParser =require('body-parser')
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const ejs=require('ejs')
 const methodOverride =require('method-override')
 //app.use(express.urlencoded({extended:false}))
@@ -14,6 +14,8 @@ app.set('view engine','ejs');
 
 const UserRoute = require('./routes/user_cont_route')
 app.use('/user',UserRoute)
+
+
 
 const dbConfig=require('./config/database.config');
 const {router} = require("express/lib/application");
@@ -39,6 +41,7 @@ app.use("/signup", require("./routes/signup"));
 app.use("/articles", require("./routes/article_cont_route"));
 app.use("/chat", require("./routes/chat1"));
 app.use("/joinChat", require ("./routes/chat2"));
+app.use("/companions", require("./routes/companion_cont_route"));
 
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`)
