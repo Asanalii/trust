@@ -7,7 +7,7 @@ const UserController = require("../controllers/user_controller");
 express().use(express.urlencoded({extended:false}))
 
 router.get('/',CompanionController.main)
-router.get('/new',CompanionController.new);
+router.get('/newCompanion',CompanionController.new);
 router.get('/:slug',CompanionController.findBySlug)
 router.post('/',CompanionController.add)
 router.delete('/:id',CompanionController.delete);

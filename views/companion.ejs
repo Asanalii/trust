@@ -10,9 +10,9 @@
 <body>
 <div class="container">
   <h1 class="mb-4">Are you searching for a companion?</h1>
-  <a href="companions/new" class="btn btn-success">Find Companion</a>
+  <a href="companion/newCompanion" class="btn btn-success">Find Companion</a>
 
-  <% companions.forEach(article=>{ %>
+  <% companions.forEach(companion=>{ %>
   <div class="card mt-4">
     <div class="card-body">
       <h4 class="card-title"><%= companion.location%></h4>
@@ -21,7 +21,7 @@
       </div>
       <div class="card-text mb-2"><%= companion.destination %></div>
 
-      <form action="/companions/<%=companion.id%>?_method=DELETE"  class="d-inline " method="post">
+      <form action="/companion/<%=companion.id%>?_method=DELETE"  class="d-inline " method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
     </div>

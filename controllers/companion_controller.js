@@ -4,12 +4,12 @@ const CompanionModel = require('../models/companion')
 
 
 exports.new = async(req,res)=>{
-    res.render('new',{companion : new CompanionModel()})
+    res.render('newCompanion',{companion : new CompanionModel()})
 }
 
 exports.main = async(req,res)=>{
     const companions = await CompanionModel.find().sort({createdAt: 'desc'})
-    res.render('companions',{companions: companions})
+    res.render('companion',{companions: companions})
 }
 
 exports.findBySlug= async(req,res)=>{
@@ -27,16 +27,16 @@ exports.add = (async (req, res) => {
 
     try{
         companion = await companion.save();
-        res.redirect(`/companions/${companion.slug}`)
+        res.redirect(`/companion`)
     } catch (e) {
-        res.render('companions/new')
+        res.render('index')
     }
 
 })
 
 exports.delete = (async (req,res) =>{
     await CompanionModel.findByIdAndDelete(req.params.id)
-    res.redirect('/companions')
+    res.redirect('/companion')
 
 })
 
