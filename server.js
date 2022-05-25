@@ -1,12 +1,18 @@
 const express = require("express");
 const mongoose=require('mongoose')
 const bodyParser =require('body-parser')
-const app = express();
 const port = process.env.PORT || 5000;
 const ejs=require('ejs')
 const methodOverride =require('method-override')
+const swaggerUi = require('swagger-ui-express')
+swaggerDocument = require('./swagger.json');
+const app = express();
 //app.use(express.urlencoded({extended:false}))
-
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
